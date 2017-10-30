@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ACo</title>
+	<style>
+		.bg {
+			background-image: url('ACOrigins-SkillTree.jpg');
+			width: 1500px;
+			height: 704px;
+			-webkit-background-size: contain;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate( -50%, -50%);
+		}
+		.skill {
+			position: absolute;
+		    width: 53px;
+		    height: 53px;
+		    border-radius: 100px;
+		    border: 2px solid #777;
+		}
+		.skill:hover{
+			border-color: #c39420;
+			background: rgba(250,250,250,0.1);
+		}
+		.skill:hover .tip{
+			display: block;
+		}
+		.tip {
+			display: none;
+			position: absolute;
+			font-family: 'Helvetica', sans-serif;
+			z-index: 100;
+			width: 300px;
+			top: 45px;
+			left: 60px;
+			color: #fff;
+			background: linear-gradient(#faca38, #c39420); 
+			padding: 15px 15px 35px 15px;
+			border-radius: 5px;
+		}
+		.title {
+			display: block;
+			width: 100%;
+			font-size: 18px;
+			position: relative;
+			text-transform: uppercase;
+		}
+		.cost {
+			position: absolute;
+			right: 5px;
+			font-size: 14px;
+			background: #111;
+			border-radius: 20px;
+			width: 20px;
+			line-height: 20px;
+			height: 20px;
+			text-align: center;
+		}
+		.desc {
+			padding-top: 8px;
+			font-weight: 100;
+			font-size: 13px;
+		}
+		body {
+			margin: 0;
+			height: 100vh;
+			background: #000;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="warrior">
+			<div class="skill" style="top: 308px;left: 652px;">
+				<div class="tip">
+					<div class="title">CHARGE HEAVY ATTACK<span class="cost">1</span></div>
+					<div class="desc">Charge heavy attacks to break tower shields and stagger enemies.</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 308px; left: 720px;">
+				<div class="tip">
+					<div class="title">REGENERATION	<span class="cost">1</span></div>
+					<div class="desc">Bayek can regenerate health while in combat.</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 308px; left: 790px;">
+				<div class="tip">
+					<div class="title">AIR ATTACK	<span class="cost">1</span></div>
+					<div class="desc">You can perform an attack while in the air</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 243px;left: 652px;">
+				<div class="tip">
+					<div class="title">OVERPOWER ULTRA<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Double the damage of your Overpower ability.</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 243px;left: 719px;">
+				<div class="tip">
+					<div class="title">PARRY<span class="cost">1</span></div>
+					<div class="desc">Deflect incoming attack while in Shield Mode to inflict critical damage and create an opening in the enemy's guard.</div>
+				</div>
+			</div><div class="skill" style="top: 243px;left: 852px;">
+				<div class="tip">
+					<div class="title">HIJACK<span class="cost">2</span></div>
+					<div class="desc">Pull enemy drivers off their mount and take control of it</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 652px;">
+				<div class="tip">
+					<div class="title">OVERPOWER COMBO<span class="cost">2</span></div>
+					<div class="desc">After an Overpower attack you can chain with a combo of light attacks.</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 719px;">
+				<div class="tip">
+					<div class="title">WEAPON BEARER<span class="cost">2</span></div>
+					<div class="desc">Equip a 2nd melee weapon.</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 852px;">
+				<div class="tip">
+					<div class="title">ADRENALINE 1<span class="cost">1</span></div>
+					<div class="desc">Passive ability. You always start a conflict with half filled adrenaline gauge.</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 916px;">
+				<div class="tip">
+					<div class="title">SHIELD CHARGE<span class="cost">2</span></div>
+					<div class="desc">When in Shield Mode, hold O/B to run faster and bash enemies in your way. This will consume adrenaline.</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 583px;">
+				<div class="tip">
+					<div class="title">OVERPOWER CHAIN THROW<span class="cost">3</span></div>
+					<div class="desc">After killing an enemy with an Overpower attack, Bayek can throw that enemy's weapon at another target.</div>
+				</div>
+			</div><div class="skill" style="top: 104px;left: 652px;">
+				<div class="tip">
+					<div class="title">OVERPOWER XP<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Killing enemies with your Overpower active gives you XP.</div>
+				</div>
+			</div><div class="skill" style="top: 104px;left: 791px;">
+				<div class="tip">
+					<div class="title">ATTACK AND PUSH<span class="cost">1</span></div>
+					<div class="desc">Hold R1 after a light attack to perform a push attack combo.</div>
+				</div>
+			</div><div class="skill" style="top: 104px;left: 852px;">
+				<div class="tip">
+					<div class="title">EXTEND COMBO<span class="cost">2</span></div>
+					<div class="desc">You can deal one additional melee attack to an enemy before they recover.</div>
+				</div>
+			</div><div class="skill" style="top: 104px;left: 917px;">
+				<div class="tip">
+					<div class="title">KILL LOOT<span class="cost">3</span></div>
+					<div class="desc">Passive ability. Automatically loot an enemy after a melee kill.</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 104px;left: 980px;">
+				<div class="tip">
+					<div class="title">ADRENALINE 2<span class="cost">3</span></div>
+					<div class="desc">Passive ability. Always start a conflict with a full adrenaline gauge.</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 43px;left: 719px;">
+				<div class="tip">
+					<div class="title">MASTER WARRIOR<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Increase the damage of all your melee attack by 1%. This can be acquired multiple times.</div>
+				</div>
+			</div>
+		</div>
+		<div class="hunter">
+			<div class="skill" style="top: 450px;left: 518px;">
+				<div class="tip">
+					<div class="title">ASSASSINATION XP<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Assassinating an enemy grants bonus XP.</div>
+				</div>
+			</div>
+			<div class="skill" style="top: 568px;left: 518px;">
+				<div class="tip">
+					<div class="title">ASSASSINATION LOOT<span class="cost">2</span></div>
+					<div class="desc">Passive ability. Automatically loot an enemy after assassinating them.</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 453px;">
+				<div class="tip">
+					<div class="title">EAGLE HARASS<span class="cost">2</span></div>
+					<div class="desc">While in hover mode, select an enemy and have Senu stun them. Passively, Senu will also help harass enemies during combat.</div>
+				</div>
+			</div><div class="skill" style="top: 243px;left: 453px;">
+				<div class="tip">
+					<div class="title">BOW BEARER<span class="cost">1</span></div>
+					<div class="desc">Equip a second bow to switch between in combat.</div>
+				</div>
+			</div><div class="skill" style="top: 308px;left: 453px;">
+				<div class="tip">
+					<div class="title">ARROW RETRIEVER<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Loot arrows stuck in your shield back into your inventory.</div>
+				</div>
+			</div><div class="skill" style="top: 373px;left: 453px;">
+				<div class="tip">
+					<div class="title">HEADSHOT XP<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Killing an enemy with a headshot grants you bonus XP.</div>
+				</div>
+			</div><div class="skill" style="top: 507px;left: 453px;">
+				<div class="tip">
+					<div class="title">STEALTH KILL STREAK<span class="cost">2</span></div>
+					<div class="desc">Passive ability. Successive assassinations grant you XP bonus if you are not detected.</div>
+				</div>
+			</div><div class="skill" style="top: 174px;left: 326px;">
+				<div class="tip">
+					<div class="title">ENHANCED LIGHT BOW<span class="cost">2</span></div>
+					<div class="desc">Fire more arrows before needing to reload.</div>
+				</div>
+			</div><div class="skill" style="top: 243px;left: 326px;">
+				<div class="tip">
+					<div class="title">ENHANCED HUNTER BOW<span class="cost">2</span></div>
+					<div class="desc">Charging your shot with the Hunter Bow will also break enemy shield defenses.</div>
+				</div>
+			</div><div class="skill" style="top: 308px;left: 326px;">
+				<div class="tip">
+					<div class="title">ENHANCED PREDATOR BOW<span class="cost">2</span></div>
+					<div class="desc">Control and guide a Predator arrow in the air.</div>
+				</div>
+			</div><div class="skill" style="top: 373px;left: 326px;">
+				<div class="tip">
+					<div class="title">ENHANCED WARRIOR BOW<span class="cost">2</span></div>
+					<div class="desc">Holding RT to charge your shot will reduce its dispersion zone</div>
+				</div>
+			</div><div class="skill" style="top: 438px;left: 326px;">
+				<div class="tip">
+					<div class="title">HUNTERS INSTINCT<span class="cost">2</span></div>
+					<div class="desc">While in hover mode with Senu, mark a civilian, enemy or animal to see the path they are currently taking.</div>
+				</div>
+			</div><div class="skill" style="top: 243px;left: 220px;">
+				<div class="tip">
+					<div class="title">ELITE RANGER<span class="cost">3</span></div>
+					<div class="desc">Aiming a bow while in midair triggers slow-motion aiming.</div>
+				</div>
+			</div><div class="skill" style="top: 373px;left: 220px;">
+				<div class="tip">
+					<div class="title">BOW FURY<span class="cost">3</span></div>
+					<div class="desc">After getting a stealth kill with your bow, you have a 3 second window of slow-mo while still aiming with your bow.</div>
+				</div>
+			</div><div class="skill" style="top: 507px;left: 220px;">
+				<div class="tip">
+					<div class="title">CHAIN ASSASSINATION<span class="cost">3</span></div>
+					<div class="desc">After assassinating an enemy with the hidden blade, Bayek can assassinate another enemy in range.</div>
+				</div>
+			</div><div class="skill" style="top: 373px;left: 125px;">
+				<div class="tip">
+					<div class="title">MASTER HUNTER<span class="cost">1</span></div>
+					<div class="desc">Passive, increase the damage of all your bows by an additional 1%. This ability can be acquired multiple times.</div>
+				</div>
+			</div>
+		</div>
+		<div class="seer">
+			<div class="skill" style="top: 568px;left: 925px;">
+				<div class="tip">
+					<div class="title">TOOL KILL XP<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Killing enemies with a tool grants XP. Tools: Flesh Decay, Poison Darts, Fire Bombs, Fire</div>
+				</div>
+			</div><div class="skill" style="top: 308px;left: 983px;">
+				<div class="tip">
+					<div class="title">FIRE BOMB<span class="cost">1</span></div>
+					<div class="desc">Throw this bomb to set your enemies ablaze. These items sit in your ranged item slot.</div>
+				</div>
+			</div><div class="skill" style="top: 373px;left: 983px;">
+				<div class="tip">
+					<div class="title">DAWN AND DUSK<span class="cost">1</span></div>
+					<div class="desc">Sit and meditate to make time speed forward to either morning or night.</div>
+				</div>
+			</div><div class="skill" style="top: 511px;left: 983px;">
+				<div class="tip">
+					<div class="title">SALESMAN<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Animal goods and trinkets can be sold at +25% price.</div>
+				</div>
+			</div><div class="skill" style="top: 243px;left: 1050px;">
+				<div class="tip">
+					<div class="title">SMOKE SCREEN<span class="cost">1</span></div>
+					<div class="desc">After a melee attacking or dodge to drop this powder that stuns nearby enemies and creates a smoke screen. Smoke screens break line of sight.</div>
+				</div>
+			</div><div class="skill" style="top: 373px;left: 1050px;">
+				<div class="tip">
+					<div class="title">SLEEP DARTS<span class="cost">1</span></div>
+					<div class="desc">Throw a dart to put lower rank enemies or animals to sleep and sneak by without being detected.</div>
+				</div>
+			</div><div class="skill" style="top: 444px;left: 1050px;">
+				<div class="tip">
+					<div class="title">FLESH DECAY<span class="cost">1</span></div>
+					<div class="desc">Use this substance on a dead body to infect it and allow it to contaminate nearby enemies.</div>
+				</div>
+			</div><div class="skill" style="top: 573px;left: 1050px;">
+				<div class="tip">
+					<div class="title">BACKSTORE<span class="cost">2</span></div>
+					<div class="desc">You can purchase rare quality gear in shops</div>
+				</div>
+			</div><div class="skill" style="top: 178px;left: 1116px;">
+				<div class="tip">
+					<div class="title">PYROMANIAC<span class="cost">1</span></div>
+					<div class="desc">Passive ability. Fire damage is increased by an additional 50%</div>
+				</div>
+			</div><div class="skill" style="top: 308px;left: 1116px;">
+				<div class="tip">
+					<div class="title">SMOKE SCREEN DAMAGE<span class="cost">2</span></div>
+					<div class="desc">Passive. Enemies caught in the smoke screen will take damage and be knocked to the ground.</div>
+				</div>
+			</div><div class="skill" style="top: 444px;left: 1116px;">
+				<div class="tip">
+					<div class="title">BERSERK<span class="cost">2</span></div>
+					<div class="desc">Press LS to use this substance on an unaware enemy and turn him against his allies</div>
+				</div>
+			</div><div class="skill" style="top: 511px;left: 1116px;">
+				<div class="tip">
+					<div class="title">BUY MATERIALS<span class="cost">2</span></div>
+					<div class="desc">You can purchase crafting materials from shops. Blacksmith and Weaver shops sell different types of materials.</div>
+				</div>
+			</div><div class="skill" style="top: 308px;left: 1182px;">
+				<div class="tip">
+					<div class="title">ANIMAL TAMING<span class="cost">3</span></div>
+					<div class="desc">After putting an animal to sleep with a sleep dart, tame them to have them follow you. You need to acquire first the Sleep Darts skill in order to use this.</div>
+				</div>
+			</div><div class="skill" style="top: 377px;left: 1182px;">
+				<div class="tip">
+					<div class="title">POISON DARTS<span class="cost">2</span></div>
+					<div class="desc">Throw this dart to poison and contaminate nearby enemies.</div>
+				</div>
+			</div><div class="skill" style="top: 444px;left: 1182px;">
+				<div class="tip">
+					<div class="title">BREATH HOLDING CHAMPION<span class="cost">3</span></div>
+					<div class="desc">Passive ability. You can stay underwater longer.</div>
+				</div>
+			</div><div class="skill" style="top: 572px;left: 1182px;">
+				<div class="tip">
+					<div class="title">CHARIOT OWNER<span class="cost">3</span></div>
+					<div class="desc">You can purchase war chariots from stable shops.</div>
+				</div>
+			</div><div class="skill" style="top: 377px;left: 1319px;">
+				<div class="tip">
+					<div class="title">MASTER SEER<span class="cost">1</span></div>
+					<div class="desc">Passive, increase the damage of all your tools by an additional 1%. This ability can be acquired multiple times.</div>
+				</div>
+			</div></div>
+	</div>
+</body>
+</html>
