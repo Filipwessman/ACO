@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>NFL jämföraren</title>
+	<style>
+		body {
+			-webkit-font-smoothing: antialiased;
+			background: #2e6075;
+			padding: 0;
+			margin: 0;
+		}
+		.team {
+			display: inline-block;
+			width: 450px;
+		}
+		.name {
+			text-transform: uppercase;
+			font-size: 22px;
+			color: #0e424d;
+		}
+		.rank {
+			font-weight: 300;
+			font-style: italic;
+			padding-right: 5px;
+		}
+		.nr {
+			color: #ee5954;
+			font-weight: 600;
+		}
+		.vs {
+			font-size: 22px;
+			font-weight: 100;
+			font-style: italic;
+			color: #2e6075;
+			padding: 0px 45px;
+		}
+		.gamedif {
+			display: block;
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.game {
+			color: #2e6075;
+			margin: 5px 0;
+			background: #e8eff2;
+			padding: 15px;
+			text-align: center;
+			font-family: 'Campton', 'Helvectia', sans-serif;
+		    display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+		}
+		.info {
+			width: 100%;
+		}
+		.game.hard .gamedif{
+			color: #ee5954;
+		}
+		.game.kindahard .gamedif{
+			color: #ef855a;
+		}
+		.game.notsohard .gamedif{
+			color: #ecc45d;
+		}
+		.game.easy .gamedif{
+			color: #2e7549;
+		}
+		.explain {
+			background: #e8eff2;
+			font-family: 'Campton', 'Helvectia', sans-serif;
+			padding: 25px;
+		}
+		.explain p {
+			text-align: center;
+			max-width: 60%;
+			margin: 0 auto;
+		}
+		.play {
+			font-size: 18px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		.play i {
+			color: #ef855a;
+		}
+	</style>
+</head>
+<body>
+	<!--<div class="explain">
+		<p>Första nummret: skillnanden mellan lagens snittet av 4 olika powerrankings</p>
+		<p>Andra nummret: skillnaden i Weeklypickem oddsen i ett 32 siffrigt talsystem för kunna jämför med första nummret</p>
+		<p>Tredje nummret: The number, <br>0-7 = väldigt jämnt<br>7-15 = jämnt<br>15-20 = tydlig fördel<br>20+ = övertygande fördel</p>
+	</div>-->
+	<div class="game" id="1"></div>
+	<div class="game" id="2"></div>
+	<div class="game" id="3"></div>
+	<div class="game" id="4"></div>
+	<div class="game" id="5"></div>
+	<div class="game" id="6"></div>
+	<div class="game" id="7"></div>
+	<div class="game" id="8"></div>
+	<div class="game" id="9"></div>
+	<div class="game" id="10"></div>
+	<div class="game" id="11"></div>
+	<div class="game" id="12"></div>
+	<div class="game" id="13"></div>
+	<div class="game" id="14"></div>
+	<div id="load"></div>
+	<div id="load2"></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	var teams = [];
+	var games = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	teams[1] = { id: 1, name: 'Bills', rank: 0, pickem: 0, odds: 1.68, ton: null, game: 7}
+	teams[2] = { id: 2, name: 'Dolphins', rank: 0, pickem: 0, odds: 2.25, ton: null, game: 1}
+	teams[3] = { id: 3, name: 'Patriots', rank: 0, pickem: 0, odds: 1.28, ton: null, game: 9}
+	teams[4] = { id: 4, name: 'Jets', rank: 0, pickem: 0, odds: 2.70, ton: null, game: 6}
+
+	teams[5] = { id: 5, name: 'Ravens', rank: 0, pickem: 0, odds: 1.66, ton: null, game: 1}
+	teams[6] = { id: 6, name: 'Bengals', rank: 0, pickem: 0, odds: 1.18, ton: null, game: 8}
+	teams[7] = { id: 7, name: 'Browns', rank: 0, pickem: 0, odds: 4.35, ton: null, game: 2}
+	teams[8] = { id: 8, name: 'Steelers', rank: 0, pickem: 0, odds: 1.64, ton: null, game: 12}
+
+	teams[9] = { id: 9, name: 'Texans', rank: 0, pickem: 0, odds: 3.05, ton: null, game: 10}
+	teams[10] = { id: 10, name: 'Colts', rank: 0, pickem: 0, odds: 5.00, ton: null, game: 8}
+	teams[11] = { id: 11, name: 'Jaguars', rank: 0, pickem: 0, odds: 0, ton: null, game: null}
+	teams[12] = { id: 12, name: 'Titans', rank: 0, pickem: 0, odds: 0, ton: null, game: null}
+
+	teams[13] = { id: 13, name: 'Broncos', rank: 0, pickem: 0, odds: 3.65, ton: null, game: 13}
+	teams[14] = { id: 14, name: 'Chiefs', rank: 0, pickem: 0, odds: 1.29, ton: null, game: 13}
+	teams[15] = { id: 15, name: 'Chargers', rank: 0, pickem: 0, odds: 3.75, ton: null, game: 9}
+	teams[16] = { id: 16, name: 'Raiders', rank: 0, pickem: 0, odds: 2.20, ton: null, game: 7}
+
+		//NFC-AFC
+
+	teams[17] = { id: 17, name: 'Cowboys', rank: 0, pickem: 0, odds: 1.78, ton: null, game: 11}
+	teams[18] = { id: 18, name: 'Giants', rank: 0, pickem: 0, odds: 0, ton: null, game: null}
+	teams[19] = { id: 19, name: 'Eagles', rank: 0, pickem: 0, odds: 1.13, ton: null, game: 3}
+	teams[20] = { id: 20, name: 'Redskins', rank: 0, pickem: 0, odds: 2.10, ton: null, game: 11}
+
+	teams[21] = { id: 21, name: 'Bears', rank: 0, pickem: 0, odds: 4.25, ton: null, game: 5}
+	teams[22] = { id: 22, name: 'Lions', rank: 0, pickem: 0, odds: 2.30, ton: null, game: 12}
+	teams[23] = { id: 23, name: 'Packers', rank: 0, pickem: 0, odds: 0, ton: null, game: null}
+	teams[24] = { id: 24, name: 'Vikings', rank: 0, pickem: 0, odds: 1.22, ton: null, game: 2}
+
+	teams[25] = { id: 25, name: 'Falcons', rank: 0, pickem: 0, odds: 1.48, ton: null, game: 6}
+	teams[26] = { id: 26, name: 'Panthers', rank: 0, pickem: 0, odds: 2.15, ton: null, game: 4}
+	teams[27] = { id: 27, name: 'Saints', rank: 0, pickem: 0, odds: 1.23, ton: null, game: 5}
+	teams[28] = { id: 28, name: 'Buccaneers', rank: 0, pickem: 0, odds: 1.74, ton: null, game: 4}
+
+	teams[29] = { id: 29, name: 'Cardinals', rank: 0, pickem: 0, odds: 0, ton: null, game: null}
+	teams[30] = { id: 30, name: 'Rams', rank: 0, pickem: 0, odds: 0, ton: null, game: null}
+	teams[31] = { id: 31, name: '49ers', rank: 0, pickem: 0, odds: 6.40, ton: null, game: 3}
+	teams[32] = { id: 32, name: 'Seahawks', rank: 0, pickem: 0, odds: 1.39, ton: null, game: 10}
+	var g;
+	var t;
+	var rankdif = 0;
+	var oddsdif = 0;
+	function getrankinput(name,rank){
+	    for (y = 0; y < name.length; y++) {
+	    	name[y] = name[y].outerHTML.replace(/<{1}[^<>]{1,}>{1}/g,"");
+	    	rank[y] = rank[y].outerHTML.replace(/<{1}[^<>]{1,}>{1}/g,"");
+	    }
+	    for (t = 1; t < teams.length; t++) {
+	    	for (z = 0; z < rank.length; z++) {
+				if (name[z].toLowerCase().indexOf(teams[t].name.toLowerCase()) >= 0) {
+					teams[t].rank = rank[z];
+				} 
+			}
+		}
+		
+	};
+	function getpickeminput(name,chance) {
+	    for (y = 0; y < name.length; y++) {
+	    	name[y] = name[y].outerHTML.replace(/<{1}[^<>]{1,}>{1}/g,"");
+	    	chance[y] = chance[y].outerHTML.replace(/<{1}[^<>]{1,}>{1}/g,"");
+	    }
+	    for (t = 1; t < teams.length; t++) {
+	    	for (z = 0; z < chance.length; z++) {
+				if (name[z].toLowerCase().indexOf(teams[t].name.toLowerCase()) >= 0) {
+					teams[t].pickem = chance[z];
+					teams[t].pickem = teams[t].pickem.replace('%','');
+				} 
+			}
+		}
+		thework();
+	};
+	function thework() {
+	    for (g = 1; g <= 14; g++) {
+			if (g <= 14){
+				games[g] = {
+					team1: null,
+					team2: null,
+					gamerankdif: null,
+					gamepickemdif: null,
+					thenumber: null
+				};
+			};
+			for (t = 1; t < teams.length; t++) {
+				if (teams[t].game == g){
+					document.getElementById(g).innerHTML += 
+					"<div class='team' id='team" + t + "'><span class='rank'>Nr<span class='nr'>" + teams[t].rank + " </span></span><b class='name'>" + teams[t].name + '</b> ' + teams[t].pickem + '% - Odds: ' + teams[t].odds + '</div> ';			if (games[g].team1 == null){
+						games[g].team1 = teams[t];
+						document.getElementById(g).innerHTML += "<span class='vs'>vs</span>";
+					} else {
+						games[g].team2 = teams[t];
+					}
+					
+				}
+			};
+			games[g].team1.rankdif = games[g].team2.rank - games[g].team1.rank;
+			games[g].team2.rankdif = games[g].team1.rank - games[g].team2.rank;
+			if (games[g].team1.rankdif > games[g].team2.rankdif){
+				games[g].gamerankdif = games[g].team1.rankdif;
+			} else {
+				games[g].gamerankdif = games[g].team2.rankdif;
+			}
+
+			games[g].team1.pickemdif = games[g].team1.pickem - games[g].team2.pickem;
+			games[g].team1.pickemdif = parseInt(Math.round(games[g].team1.pickemdif * 3.2) / 10);
+			games[g].team2.pickemdif = games[g].team2.pickem - games[g].team1.pickem;
+			games[g].team2.pickemdif = parseInt(Math.round(games[g].team2.pickemdif * 3.2) / 10);
+			if (games[g].team1.pickemdif > games[g].team2.pickemdif){
+				games[g].gamepickemdif = games[g].team1.pickemdif;
+			} else {
+				games[g].gamepickemdif = games[g].team2.pickemdif;
+			}
+
+
+			games[g].team1.thenumber = parseInt((games[g].team1.pickemdif + games[g].team1.rankdif) / 2);
+			games[g].team2.thenumber = parseInt((games[g].team2.pickemdif + games[g].team2.rankdif) / 2);
+			if (games[g].team1.thenumber > games[g].team2.thenumber){
+				games[g].thenumber = games[g].team1.thenumber;
+			} else {
+				games[g].thenumber = games[g].team2.thenumber;
+			}
+
+			document.getElementById(g).innerHTML += "<div class='info'><span class='nr'>" + games[g].gamerankdif + "</span>  - " + games[g].gamepickemdif + "/32 <div class='gamedif'>" + games[g].thenumber + "</div></div>"
+			
+			
+			if(games[g].team1.odds) {
+				games[g].team1.play = parseInt((32 + games[g].team1.thenumber) * (games[g].team1.odds - 1));
+				games[g].team1.id = 'team' + games[g].team1.id;
+				document.getElementById(games[g].team1.id).innerHTML += " <div class='play'>play: <i>" + games[g].team1.play + '</i></div>';
+			}
+			if(games[g].team2.odds) {
+				games[g].team2.play = parseInt((32 + games[g].team2.thenumber) * (games[g].team2.odds - 1));
+				games[g].team2.id = 'team' + games[g].team2.id;
+				document.getElementById(games[g].team2.id).innerHTML += " <div class='play'>play: <i>" + games[g].team2.play + '</i></div>';
+			}
+		};
+	};
+	$( document ).ready(function(){
+		$.get('http://www.nfl.com/news/story/0ap3000000866435/article/nfl-power-rankings-week-8-philadelphia-eagles-hit-no-1-spot?campaign=fb-nf-sf124791587-sf124791587&sf124791587=1', function (rankinput) {
+		    rankinput = $(rankinput).find('.pr-header');
+		    inputrank = $(rankinput).find('.rank');
+		    inputname = $(rankinput).find('.team-name');
+		    getrankinput(inputname,inputrank);
+		}, 'html'); 
+		$.get('http://weeklypickem.fantasy.nfl.com/entry?entryId=2638030&week=8', function (pickeminput) {
+			pickeminput = $(pickeminput).find('.pick-module');
+		    pickeminputchance = $(pickeminput).find('.team-total');
+		    pickeminputname = $(pickeminput).find('.team-nickname');
+		   	getpickeminput(pickeminputname,pickeminputchance);
+		}, 'html');
+	});
+	</script>
+</body>
+</html>
